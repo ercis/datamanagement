@@ -1,1 +1,1 @@
-# datamanagement
+# Datamanagement lecture

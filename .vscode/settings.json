@@ -1,0 +1,19 @@
+{
+    "editor.wordWrapColumn": 140,
+    "editor.wordWrap": "wordWrapColumn",
+    "notebook.lineNumbers": "on",
+    "sqltools.highlightQuery": false,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "localhost",
+            "database": "postgres",
+            "username": "postgres",
+            "password": "postgres"
+        }
+    ],
+    "sql-formatter.uppercase": true,
+}
