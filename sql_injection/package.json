@@ -1,0 +1,17 @@
+{
+  "name": "sql_injection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Max Lütkemeyer",
+  "license": "",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
+  }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SQL Injection Example</title>
+        <style>
+            textarea {
+                width: 400px;
+                height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>WIConnect Social Network</h1>
+        <h3>Comments:</h3>
+        <ul></ul>
+
+        <!-- New comment -->
+        <h3>New Comment:</h3>
+
+        <textarea></textarea> <br />
+        <button onclick="addComment()">Post Comment</button>
+
+        <script src="client.js">
+            loadComments()
+        </script>
+    </body>
+</html>

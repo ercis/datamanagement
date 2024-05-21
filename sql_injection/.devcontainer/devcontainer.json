@@ -1,0 +1,56 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node-postgres
+{
+	"name": "Node.js & PostgreSQL",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"PKief.material-icon-theme",
+				"usernamehw.errorlens",
+				"qwtel.sqlite-viewer",
+				"akamud.vscode-theme-onedark",
+				"wayou.vscode-todo-highlight",
+				"janisdd.vscode-edit-csv",
+				"IgorSbitnev.error-gutters",
+				"dbaeumer.vscode-eslint",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"ecmel.vscode-html-css",
+				"ms-ossdata.vscode-postgresql",
+				"esbenp.prettier-vscode",
+				"mechatroner.rainbow-csv",
+				"plibither8.remove-comments",
+				"cmoog.sqlnotebook",
+				"alexcvzz.vscode-sqlite",
+				"mtxr.sqltools",
+				"mtxr.sqltools-driver-pg",
+				"mtxr.sqltools-driver-sqlite"
+			]
+		}
+	},
+	"portsAttributes": {
+		"3000": {
+			"label": "html_server"
+		}
+	}
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// This can be used to network with other containers or with the host.
+	// "forwardPorts": [3000, 5432],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn install",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
