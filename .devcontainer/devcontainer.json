@@ -17,14 +17,14 @@
 				"adpyke.vscode-sql-formatter"
 			]
 		}
-	}
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or the host.
-	//"forwardPorts": [9000, 9000]
+	"forwardPorts": [9000] 
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "pip install -r requirements.txt"
