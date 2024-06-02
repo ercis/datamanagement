@@ -1,6 +1,18 @@
+/*markdown
+# Setup
+*/
+
+/*markdown
+Cleanup
+*/
+
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS product;
-DROP TABLE customer;
+DROP TABLE IF EXISTS customer;
+
+/*markdown
+Table definitions
+*/
 
 CREATE TABLE product (
     product_id INTEGER,
@@ -23,6 +35,10 @@ CREATE TABLE customer (
     registered_at TIMESTAMP
 );
 
+/*markdown
+Dummy data
+*/
+
 INSERT INTO
     customer (customer_id, name, registered_at)
 VALUES
@@ -31,6 +47,10 @@ VALUES
     (3, 'Alice', current_timestamp),
     (4, 'Bob', '2017-01-01 00:00:00'),
     (5, 'Charlie', '2017-01-01 00:00:00');
+
+/*markdown
+Introduction example
+*/
 
 SELECT
     customer_id, name
