@@ -28,7 +28,8 @@
 				"alexcvzz.vscode-sqlite",
 				"mtxr.sqltools",
 				"mtxr.sqltools-driver-pg",
-				"mtxr.sqltools-driver-sqlite"
+				"mtxr.sqltools-driver-sqlite",
+				"adpyke.vscode-sql-formatter"
 			]
 		}
 	},
