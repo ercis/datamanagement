@@ -128,7 +128,8 @@ CREATE TABLE bestellung (
     Bestimmungsland varchar(15) DEFAULT NULL,
     PRIMARY KEY (BestellNr),
     CONSTRAINT PersonalBestellungen FOREIGN KEY (PersonalNr) REFERENCES personal (PersonalNr),
-    CONSTRAINT VersandfirmenBestellungen FOREIGN KEY (VersandÜber) REFERENCES versandfirma (FirmenNr)
+    CONSTRAINT VersandfirmenBestellungen FOREIGN KEY (VersandÜber) REFERENCES versandfirma (FirmenNr),
+    CONSTRAINT KundinnenBestellungen FOREIGN KEY (KCode) REFERENCES Kundin (KCode)
 );
 
 CREATE TABLE bestellposition (
