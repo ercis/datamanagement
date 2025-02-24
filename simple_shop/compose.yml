@@ -4,13 +4,8 @@ services:
     image: postgres:17
     restart: always
     ports:
-      - 5432:5432      # Maps the container's port 5432 to the host's port 5432
+      - 5432:5432
     environment:
-      POSTGRES_PASSWORD: postgres     # Set your PostgreSQL password
-      POSTGRES_USER: postgres         # Set your PostgreSQL username
-      POSTGRES_DB: postgres           # Set your PostgreSQL database name
-    volumes:
-      - postgres_data:/var/lib/postgresql/data   # Persists data even if the container stops
-
-volumes:
-  postgres_data:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
