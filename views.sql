@@ -2,9 +2,9 @@
 # Setup
 */
 
+DROP VIEW IF EXISTS beverages;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS category;
-DROP TABLE IF EXISTS orders;
 
 CREATE TABLE category (
     category_id SERIAL,
