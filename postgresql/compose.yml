@@ -1,0 +1,18 @@
+# Access the database with a client program like psql, vscode, DataGrip, etc.
+# The Database URL is postgres://postgres:postgres@localhost:5432/postgres
+# Use "postgres" as the username and password to access the database.
+services:
+  db:
+    image: postgres:17
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+
+volumes:
+  postgres-data:
