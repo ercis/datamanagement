@@ -2,18 +2,17 @@
 # Setup
 */
 
-DROP TYPE veranstaltungstyp;
+DROP TABLE IF EXISTS event;
+DROP TYPE IF EXISTS event_type;
 
-CREATE TYPE veranstaltungstyp AS ENUM ('Seminar', 'Vorlesung', 'Projektseminar');
+CREATE TYPE event_type AS ENUM ('Seminar', 'Lecture', 'Project Seminar');
 
-CREATE TABLE veranstaltung (
-    veranstaltung_id SERIAL,
-    bezeichnung VARCHAR(255) NOT NULL,
-    kurzbeschreibung VARCHAR(10),
-    typ veranstaltungstyp NOT NULL,
-    sws INTEGER NOT NULL,
-    beschreibung TEXT,
-    PRIMARY KEY (veranstaltung_id)
+CREATE TABLE event (
+    event_id SERIAL,
+    name TEXT NOT NULL,
+    description TEXT,
+    type event_type NOT NULL,
+    PRIMARY KEY (event_id)
 )
 
 /*markdown
@@ -21,41 +20,43 @@ CREATE TABLE veranstaltung (
 */
 
 INSERT INTO
-    veranstaltung
+    event
 VALUES
     (
         DEFAULT,
-        'Datenmanagement',
-        'Dama',
-        'Vorlesung',
-        4,
-        'Vorlesung mit Folien zu SQL'
+        'Data Management',
+        'Lecture about data modeling, management, and SQL',
+        'Lecture'
     );
 
 INSERT INTO
-    veranstaltung (bezeichnung, typ, sws)
+    event (name, TYPE, description)
 VALUES
-    ('Datenmanagement', 'Vorlesung', 4);
+    (
+        'Data Management',
+        'Lecture',
+        'Lecture about data modeling, management, and SQL'
+    );
 
 /*markdown
 # Update
 */
 
 UPDATE
-    veranstaltung
+    event
 SET
-    sws = 6
+    type = 'Seminar'
 WHERE
-    bezeichnung = 'Datenmanagement';
+    name = 'Data Management';
 
 /*markdown
 # Delete
 */
 
 DELETE FROM
-    veranstaltung;
+    event;
 
 DELETE FROM
-    veranstaltung
+    event
 WHERE
-    kurzbeschreibung = 'Dama';
+    name = 'Data Management';
