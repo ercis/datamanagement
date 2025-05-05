@@ -1,66 +1,64 @@
-DROP TABLE IF EXISTS mitglied;
-DROP TABLE IF EXISTS zuordnung;
+DROP TABLE IF EXISTS membership;
+DROP TABLE IF EXISTS event_hosted_in_forum;
 DROP TABLE IF EXISTS forum;
 DROP TABLE IF EXISTS account;
-DROP TABLE IF EXISTS veranstaltung;
+DROP TABLE IF EXISTS event;
 
-DROP TYPE IF EXISTS veranstaltungstyp;
-DROP TYPE IF EXISTS forum_status;
-DROP TYPE IF EXISTS mitglied_status;
+DROP TYPE IF EXISTS event_type;
+DROP TYPE IF EXISTS forum_state;
+DROP TYPE IF EXISTS membership_state;
 
 CREATE TABLE account (
     account_id SERIAL,
-    passwort VARCHAR(1000) NOT NULL,
-    name VARCHAR(45) NOT NULL,
-    vorname VARCHAR(45) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    geburtsdatum DATE,
+    password TEXT NOT NULL,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    birthday DATE,
     PRIMARY KEY (account_id)
 )
 
-CREATE TYPE veranstaltungstyp AS ENUM ('Seminar', 'Vorlesung', 'Projektseminar');
+CREATE TYPE event_type AS ENUM ('Seminar', 'Lecture', 'Project Seminar');
 
-CREATE TABLE veranstaltung (
-    veranstaltung_id SERIAL,
-    bezeichnung VARCHAR(255) NOT NULL,
-    kurzbeschreibung VARCHAR(10),
-    typ veranstaltungstyp NOT NULL,
-    sws INTEGER NOT NULL,
-    beschreibung TEXT,
-    PRIMARY KEY (veranstaltung_id)
+CREATE TABLE event (
+    event_id SERIAL,
+    name TEXT NOT NULL,
+    description VARCHAR(10),
+    type event_type NOT NULL,
+    PRIMARY KEY (event_id)
 )
 
-CREATE TYPE forum_status AS ENUM ('offen', 'geschlossen');
+CREATE TYPE forum_state AS ENUM ('open', 'closed');
 
 CREATE TABLE forum (
     forum_id SERIAL,
     administrator INTEGER NOT NULL,
-    status forum_status NOT NULL,
-    thema VARCHAR(100) NOT NULL,
+    state forum_state NOT NULL,
+    topic TEXT NOT NULL,
     PRIMARY KEY (forum_id),
     FOREIGN KEY (administrator) REFERENCES account(account_id) 
         ON DELETE NO ACTION 
         ON UPDATE CASCADE
 );
 
-CREATE TABLE zuordnung (
-    zuordnung_forum INTEGER NOT NULL,
-    zuordnung_veranstaltung INTEGER NOT NULL,
-    PRIMARY KEY (zuordnung_forum, zuordnung_veranstaltung),
-    FOREIGN KEY (zuordnung_forum) REFERENCES forum(forum_id) 
+CREATE TABLE event_hosted_in_forum (
+    forum_id INTEGER NOT NULL,
+    event_id INTEGER NOT NULL,
+    PRIMARY KEY (forum_id, event_id),
+    FOREIGN KEY (forum_id) REFERENCES forum(forum_id) 
         ON DELETE NO ACTION 
         ON UPDATE CASCADE,
-    FOREIGN KEY (zuordnung_veranstaltung) REFERENCES veranstaltung(veranstaltung_id)
+    FOREIGN KEY (event_id) REFERENCES event(event_id)
         ON DELETE NO ACTION 
         ON UPDATE CASCADE
 );
 
-CREATE TYPE mitglied_status AS ENUM ('standard', 'verwarnt', 'gesperrt');
+CREATE TYPE membership_state AS ENUM ('standard', 'warned', 'blocked');
 
-CREATE TABLE mitglied (
+CREATE TABLE membership (
     forum_id INTEGER NOT NULL,
     account_id INTEGER NOT NULL,
-    status mitglied_status NOT NULL,
+    status membership_state NOT NULL,
     PRIMARY KEY (forum_id, account_id),
     FOREIGN KEY (forum_id) REFERENCES forum(forum_id) 
         ON DELETE NO ACTION 
